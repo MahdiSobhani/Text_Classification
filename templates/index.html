@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>text-classification</title>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<style>
+    
+body {
+    margin: 0;
+    font-family: Vazirmatn, sans-serif;
+    background: linear-gradient(135deg, #105d70, #764ba2);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    background: rgb(255, 255, 255);
+    padding: 40px;
+    border-radius: 16px;
+    width: 550px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 8px rgba(102,126,234,0.3);
+}
+
+button {
+    width: 50%;
+    padding: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #7183d8;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+button:hover {
+    background: #5a67d8;
+    transform: translateY(-2px);
+}
+</style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h3>تشخیص متن بر اساس دسته بندی (ورزشی ,ادبیات ,سینما)</h3>
+    
+        <form action="/submit" method="POST">
+            <input type="text" name="text" placeholder="جمله را وارد کنید"؛ required>
+            <button type="submit">  پیش بینی</button>
+        </form>
+        
+        {% if category %}
+        <div class="result-box">
+            👋 به احتمال {{score}}٪ مرتبط با <strong>{{category}}</strong> می‌باشد 👋
+        </div>
+        {% endif %}
+    
+    </div>
+
+</body>
+</html>
